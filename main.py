@@ -1,9 +1,12 @@
 import re
 import string
 import numpy as np
+
+
 def pre_process(s):
     res = re.sub('['+string.punctuation+']', '', s.lower()).split()
     return res
+
 
 def make_dictionary(list_of_words):
     sentence_dict = {}
@@ -14,13 +17,15 @@ def make_dictionary(list_of_words):
             k = k+1
     return sentence_dict
 
+
 def make_vector(dictionary, sentence_words):
     vector = np.zeros(len(dictionary))
     for word in sentence_words:
         vector[dictionary.get(word)] += 1
     return vector
-
 # Press the green button in the gutter to run the script.
+
+
 if __name__ == '__main__':
     s1 = "I am, happy!!!"
     s2 = "I am not sad, I really do!"
